@@ -1,0 +1,21 @@
+.company-spotlight {
+    padding: 40px 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .company-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .company-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+  }
+  

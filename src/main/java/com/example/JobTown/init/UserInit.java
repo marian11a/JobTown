@@ -16,11 +16,13 @@ public class UserInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (this.userRepository.count() <= 0) {
-            User user = new User();
-            user.setEmail("test@abv.bg");
-            user.setPassword("1234");
-            user.setUsername("test");
-            this.userRepository.save(user);
+            for (int i = 0; i < 10; i++) {
+                User user = new User();
+                user.setEmail("test@abv.bg" + i);
+                user.setPassword("1234");
+                user.setUsername("test" + i);
+                this.userRepository.save(user);
+            }
         }
     }
 }
