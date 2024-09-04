@@ -1,5 +1,6 @@
 import React from 'react';
-import HeroSection from './components/BackgroundSection';
+import Navbar from './components/Navbar';
+import BackgroundSection from './components/BackgroundSection';
 import FeaturedJobs from './components/FeaturedJobs';
 import SearchBar from './components/SearchBar';
 import CompanySpotlight from './components/CompanySpotlight';
@@ -9,7 +10,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <HeroSection />
+      <Navbar />
+      <BackgroundSection />
       <SearchBar />
       <FeaturedJobs />
       <CompanySpotlight />

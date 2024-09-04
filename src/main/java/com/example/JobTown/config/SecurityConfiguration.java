@@ -29,6 +29,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/api/users").permitAll() // Allow public access to this endpoint
+                                .requestMatchers("/api/jobs").permitAll() // Allow public access to this endpoint
                                 .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable); // Disable CSRF for simplicity
