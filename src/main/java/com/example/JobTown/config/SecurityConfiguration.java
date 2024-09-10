@@ -28,11 +28,12 @@ public class SecurityConfiguration {
                 )
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/api/users").permitAll() // Allow public access to this endpoint
-                                .requestMatchers("/api/jobs").permitAll() // Allow public access to this endpoint
+                                .requestMatchers("/api/users").permitAll()
+                                .requestMatchers("/api/jobs").permitAll()
+                                .requestMatchers("/api/signup").permitAll()
                                 .anyRequest().authenticated()
                 )
-                .csrf(AbstractHttpConfigurer::disable); // Disable CSRF for simplicity
+                .csrf(AbstractHttpConfigurer::disable);
 
         return httpSecurity.build();
     }
