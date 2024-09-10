@@ -6,7 +6,8 @@ import FeaturedJobs from './components/FeaturedJobs';
 import SearchBar from './components/SearchBar';
 import CompanySpotlight from './components/CompanySpotlight';
 import Footer from './components/Footer';
-import Signup from './components/Signup'; // Import Signup component
+import Signup from './components/Signup';
+import Signin from './components/Signin';
 import './App.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             }
           />
           {/* Define the Signup page route */}
+          <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
