@@ -20,10 +20,10 @@ public class UserInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (this.userRepository.count() <= 0) {
-                User user = new User();
-                user.setEmail("admin@abv.bg");
-                user.setPassword(passwordEncoder.encode("admin"));
-                this.userRepository.save(user);
+            User user = new User();
+            user.setEmail("admin@abv.bg");
+            user.setPassword(passwordEncoder.encode("admin"));
+            this.userRepository.save(user);
         }
     }
 }
