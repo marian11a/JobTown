@@ -20,7 +20,6 @@ public class UserInit implements CommandLineRunner {
                 User user = new User();
                 user.setEmail("test@abv.bg" + i);
                 user.setPassword("1234");
-                user.setUsername("test" + i);
                 this.userRepository.save(user);
             }
         }

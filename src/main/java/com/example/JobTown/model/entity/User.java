@@ -11,10 +11,6 @@ import java.util.Set;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Length(min = 3, max = 20)
-    @Column(unique = true, nullable = false)
-    private String username;
-
     @Email
     @Column(unique = true, nullable = false)
     private String email;
@@ -30,14 +26,6 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<SavedJob> savedJobs = new HashSet<>();
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getEmail() {
         return email;
