@@ -16,9 +16,9 @@ public class Job extends BaseEntity {
     private LocalDateTime expiresAt;
 
     // Many jobs belong to one user
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = true)
-    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = true)
+//    private User user;
 
     // Many jobs belong to one company
     @ManyToOne(fetch = FetchType.LAZY)
@@ -89,13 +89,13 @@ public class Job extends BaseEntity {
         this.expiresAt = expiresAt;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Company getCompany() {
         return company;

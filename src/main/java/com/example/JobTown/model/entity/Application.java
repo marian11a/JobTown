@@ -12,9 +12,9 @@ public class Application extends BaseEntity {
     private String status;
 
     // Many applications belong to one user
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
     // Many applications belong to one job
     @ManyToOne(fetch = FetchType.LAZY)

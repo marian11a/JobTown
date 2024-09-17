@@ -20,9 +20,9 @@ public class Company extends BaseEntity {
     private String websiteUrl;
 
     // Many companies belong to one user
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
     // One company can have many jobs
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)

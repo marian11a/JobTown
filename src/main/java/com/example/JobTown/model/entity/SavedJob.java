@@ -7,9 +7,9 @@ import java.time.LocalDateTime;
 public class SavedJob extends BaseEntity {
 
     // Many saved jobs belong to one user
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
     // One saved job is associated with one job
     @ManyToOne(fetch = FetchType.LAZY)
