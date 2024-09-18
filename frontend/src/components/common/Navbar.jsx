@@ -16,7 +16,7 @@ function Navbar() {
 
         checkAuthStatus();
         // Optionally set an interval or listen to some event if you expect changes dynamically
-        const interval = setInterval(checkAuthStatus, 1000); // Polling every second
+        const interval = setInterval(checkAuthStatus, 300); // Polling every second
 
         return () => clearInterval(interval); // Cleanup on unmount
     }, []);
@@ -51,15 +51,7 @@ function Navbar() {
                         <Link to="/profile" className="navbar-button">
                             Profile
                         </Link>
-                        <Link to="/" onClick={handleLogout} className="navbar-button">
-                            Logout
-                        </Link>
                     </>
-                )}
-                {isAdmin && (
-                    <Link to="/admin/user-management" className="navbar-button">
-                        User Management
-                    </Link>
                 )}
             </div>
         </nav>

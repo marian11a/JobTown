@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import UserService from '../service/UserService';
+import './UserManagementPage.css';  // Import the CSS file
 
 function UserManagementPage() {
   const [users, setUsers] = useState([]);
@@ -13,22 +14,18 @@ function UserManagementPage() {
 
   const fetchUsers = async () => {
     try {
-
       const token = localStorage.getItem('token'); // Retrieve the token from localStorage
       const response = await UserService.getAllUsers(token);
-      //   console.log(response);
       setUsers(response.ourUsersList); // Assuming the list of users is under the key 'ourUsersList'
     } catch (error) {
       console.error('Error fetching users:', error);
     }
   };
 
-
   const deleteUser = async (userId) => {
     try {
       // Prompt for confirmation before deleting the user
       const confirmDelete = window.confirm('Are you sure you want to delete this user?');
-
       const token = localStorage.getItem('token'); // Retrieve the token from localStorage
       if (confirmDelete) {
         await UserService.deleteUser(userId, token);
@@ -43,7 +40,7 @@ function UserManagementPage() {
   return (
     <div className="user-management-container">
       <h2>Users Management Page</h2>
-      <button className='reg-button'> <Link to="/register">Add User</Link></button>
+      <button className="reg-button"><Link to="/register">Add User</Link></button>
       <table>
         <thead>
           <tr>
@@ -60,11 +57,10 @@ function UserManagementPage() {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>
-                <button className='delete-button' onClick={() => deleteUser(user.id)}>Delete</button>
+                <button className="delete-button" onClick={() => deleteUser(user.id)}>Delete</button>
                 <button><Link to={`/update-user/${user.id}`}>
                   Update
-                </Link>
-                </button>
+                </Link></button>
               </td>
             </tr>
           ))}

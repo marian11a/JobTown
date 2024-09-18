@@ -19,7 +19,10 @@ function LoginPage() {
             if (userData.token) {
                 localStorage.setItem('token', userData.token);
                 localStorage.setItem('role', userData.role);
-                navigate('/'); // Redirect to home page after login
+                // Introduce a delay before redirecting
+                setTimeout(() => {
+                    navigate('/'); // Redirect to home page after delay
+                }, 300);
             } else {
                 setError(userData.message);
             }
