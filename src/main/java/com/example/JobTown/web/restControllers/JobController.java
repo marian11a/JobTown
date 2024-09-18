@@ -23,7 +23,7 @@ public class JobController {
     }
 
     @GetMapping
-    public List<Job> getAllUsers() {
+    public List<Job> getAllJobs() {
         return jobService.getAllJobs();
     }
 }

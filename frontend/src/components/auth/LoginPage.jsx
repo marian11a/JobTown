@@ -1,3 +1,4 @@
+// LoginPage.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "../service/UserService";
@@ -18,7 +19,7 @@ function LoginPage() {
             if (userData.token) {
                 localStorage.setItem('token', userData.token);
                 localStorage.setItem('role', userData.role);
-                navigate('/profile');
+                navigate('/'); // Redirect to home page after login
             } else {
                 setError(userData.message);
             }

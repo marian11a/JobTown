@@ -1,17 +1,30 @@
-import React from 'react';
+// Navbar.js
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import UserService from '../service/UserService';
 import './Navbar.css';
 
 function Navbar() {
-    const isAuthenticated = UserService.isAuthenticated();
-    const isAdmin = UserService.isAdmin();
+    const [isAuthenticated, setIsAuthenticated] = useState(UserService.isAuthenticated());
+    const [isAdmin, setIsAdmin] = useState(UserService.isAdmin());
+
+    useEffect(() => {
+        const checkAuthStatus = () => {
+            setIsAuthenticated(UserService.isAuthenticated());
+            setIsAdmin(UserService.isAdmin());
+        };
+
+        checkAuthStatus();
+        // Optionally set an interval or listen to some event if you expect changes dynamically
+        const interval = setInterval(checkAuthStatus, 1000); // Polling every second
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
 
     const handleLogout = () => {
-        const confirmDelete = window.confirm('Are you sure you want to logout this user?');
-        if (confirmDelete) {
-            UserService.logout();
-        }
+        UserService.logout();
+        setIsAuthenticated(false);
+        setIsAdmin(false);
     };
 
     return (

@@ -1,3 +1,4 @@
+// RegistrationPage.js
 import React, { useState } from 'react';
 import UserService from '../service/UserService';
 import { useNavigate } from 'react-router-dom';
@@ -23,19 +24,19 @@ function RegistrationPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const token = localStorage.getItem('token');
-            await UserService.register(formData, token);
+            // Register the user
+            await UserService.register(formData);
 
-            // Clear form fields after successful registration
-            setFormData({
-                name: '',
-                email: '',
-                password: '',
-                role: '',
-                city: ''
-            });
-            alert('User registered successfully');
-            navigate('/admin/user-management');
+            // Automatically log in the user
+            const userData = await UserService.login(formData.email, formData.password);
+
+            if (userData.token) {
+                localStorage.setItem('token', userData.token);
+                localStorage.setItem('role', userData.role);
+                navigate('/'); // Redirect to home page after login
+            } else {
+                setError('An error occurred during login');
+            }
         } catch (error) {
             console.error('Error registering user:', error);
             setError('An error occurred while registering user');

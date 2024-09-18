@@ -49,7 +49,6 @@ function App() {
           {/* Admin routes (accessible only if the user is an admin) */}
           {isAdmin && (
             <>
-              <Route path="/register" element={<RegistrationPage />} />
               <Route path="/admin/user-management" element={<UserManagementPage />} />
               <Route path="/update-user/:userId" element={<UpdateUser />} />
             </>
