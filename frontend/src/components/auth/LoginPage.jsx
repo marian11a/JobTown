@@ -1,4 +1,3 @@
-// LoginPage.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "../service/UserService";
@@ -22,6 +21,7 @@ function LoginPage() {
                 // Introduce a delay before redirecting
                 setTimeout(() => {
                     navigate('/'); // Redirect to home page after delay
+                    window.location.reload();
                 }, 300);
             } else {
                 setError(userData.message);

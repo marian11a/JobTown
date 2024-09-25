@@ -3,6 +3,7 @@ package com.example.JobTown.service;
 
 import com.example.JobTown.model.dto.ReqRes;
 import com.example.JobTown.model.entity.OurUser;
+import com.example.JobTown.model.enums.RoleEnum;
 import com.example.JobTown.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,7 +35,7 @@ public class UsersManagementService {
             OurUser ourUser = new OurUser();
             ourUser.setEmail(registrationRequest.getEmail());
             ourUser.setCity(registrationRequest.getCity());
-            ourUser.setRole(registrationRequest.getRole());
+            ourUser.setRole(RoleEnum.USER.name());
             ourUser.setName(registrationRequest.getName());
             ourUser.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
             OurUser ourUsersResult = userRepository.save(ourUser);
@@ -76,16 +77,16 @@ public class UsersManagementService {
     }
 
 
-    public ReqRes refreshToken(ReqRes refreshTokenReqiest){
+    public ReqRes refreshToken(ReqRes refreshTokenRequest){
         ReqRes response = new ReqRes();
         try{
-            String ourEmail = jwtUtils.extractUsername(refreshTokenReqiest.getToken());
+            String ourEmail = jwtUtils.extractUsername(refreshTokenRequest.getToken());
             OurUser users = userRepository.findByEmail(ourEmail).orElseThrow();
-            if (jwtUtils.isTokenValid(refreshTokenReqiest.getToken(), users)) {
+            if (jwtUtils.isTokenValid(refreshTokenRequest.getToken(), users)) {
                 var jwt = jwtUtils.generateToken(users);
                 response.setStatusCode(200);
                 response.setToken(jwt);
-                response.setRefreshToken(refreshTokenReqiest.getToken());
+                response.setRefreshToken(refreshTokenRequest.getToken());
                 response.setExpirationTime("24Hr");
                 response.setMessage("Successfully Refreshed Token");
             }

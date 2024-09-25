@@ -11,7 +11,6 @@ function RegistrationPage() {
         name: '',
         email: '',
         password: '',
-        role: '',
         city: ''
     });
     const [error, setError] = useState('');
@@ -32,8 +31,8 @@ function RegistrationPage() {
 
             if (userData.token) {
                 localStorage.setItem('token', userData.token);
-                localStorage.setItem('role', userData.role);
                 navigate('/'); // Redirect to home page after login
+                window.location.reload();
             } else {
                 setError('An error occurred during login');
             }
@@ -79,18 +78,6 @@ function RegistrationPage() {
                             id="password"
                             value={formData.password}
                             onChange={handleInputChange}
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="role">Role</label>
-                        <input
-                            type="text"
-                            name="role"
-                            id="role"
-                            value={formData.role}
-                            onChange={handleInputChange}
-                            placeholder="Enter your role"
                             required
                         />
                     </div>
