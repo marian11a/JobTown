@@ -1,9 +1,13 @@
 package com.example.JobTown.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "applications")
+@Data
 public class Application extends BaseEntity {
 
     private String resumeUrl;
@@ -11,17 +15,11 @@ public class Application extends BaseEntity {
     private LocalDateTime appliedAt;
     private String status;
 
-    // Many applications belong to one user
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private OurUser user;
 
-    // Many applications belong to one job
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "job_id", nullable = false)
     private Job job;
-
-    // Getters and setters
-
-    // Add utility methods for convenience if needed
 }

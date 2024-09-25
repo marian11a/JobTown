@@ -36,16 +36,13 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         final String jwtToken;
         final String userEmail;
 
-        // Bypass the JWT filter for specific paths
         String requestURI = request.getRequestURI();
 
-        // Skip filtering for registration and login endpoints
         if (requestURI.contains("/auth/register") || requestURI.contains("/auth/login")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // Check for token in the Authorization header
         if (authHeader == null || authHeader.isBlank() || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;

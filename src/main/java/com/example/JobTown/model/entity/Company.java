@@ -1,12 +1,15 @@
 package com.example.JobTown.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "companies")
+@Data
 public class Company extends BaseEntity {
 
     @Length(min = 3, max = 20)
@@ -19,12 +22,10 @@ public class Company extends BaseEntity {
 
     private String websiteUrl;
 
-    // Many companies belong to one user
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private OurUser user;
 
-    // One company can have many jobs
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Job> jobs = new HashSet<>();
 }
