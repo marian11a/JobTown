@@ -24,6 +24,8 @@ public class JobController {
 
     @GetMapping
     public List<Job> getAllJobs() {
-        return jobService.getAllJobs();
+        List<Job> allJobs = jobService.getAllJobs();
+
+        return allJobs;
     }
 }

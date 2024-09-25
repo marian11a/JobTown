@@ -19,11 +19,10 @@ public class Job extends BaseEntity {
     private LocalDateTime postedAt;
     private LocalDateTime expiresAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = true)
     private OurUser user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id", nullable = true)
+    @ManyToOne
     private Company company;
 }
